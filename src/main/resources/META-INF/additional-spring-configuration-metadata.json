@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.management.endpoints.enabled-by-default",
+      "type": "java.lang.String",
+      "description": "Description for spring.management.endpoints.enabled-by-default."
+    },
+    {
+      "name": "spring.management.endpoints.web.exposure.include",
+      "type": "java.lang.String",
+      "description": "Description for spring.management.endpoints.web.exposure.include."
+    }
+  ] }
