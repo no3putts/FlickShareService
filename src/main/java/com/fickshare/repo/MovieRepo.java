@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MovieRepo extends JpaRepository<Movie,String>
 {
-    List<Movie> findByTitleIsLike(@Param(value = "title") String title);
+    List<Movie> findByTitleLike(@Param(value = "title") String title);
     Movie findByImdbID(@Param(value = "imdbId") String imdbId);
     int deleteByImdbID(@Param(value="imdbId") String imdbId);
 }

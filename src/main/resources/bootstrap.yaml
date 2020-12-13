@@ -1,3 +1,6 @@
 logging:
   level:
     root: error
+    org:
+      hibernate:
+        SQL: DEBUG

@@ -8,7 +8,7 @@ public interface MovieService {
     Movie findOne(String id);
     Movie saveMovie(String imdbid);
     Movie saveMovie(Movie m);
-    Movie updateMovie(Movie m);
+    Movie updateMovie(String imdbid, String comment);
     List<Movie> findByTitle(String title);
     List<Movie> getImdbMovieByTile(String title);
     Movie getImdbMovie(String imdbId);

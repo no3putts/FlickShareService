@@ -1,6 +1,7 @@
 package com.fickshare.api;
 
 
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.fickshare.domain.Movie;
 import com.fickshare.service.MovieService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -65,7 +66,7 @@ public class MovieController
             return service.getImdbMovieByTile(title);
     }
 
-    @PutMapping
+    @PutMapping(value="/{imdbid}")
     @Operation(summary = "Update Movie Information")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Movie information successfully updated",
@@ -73,9 +74,9 @@ public class MovieController
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid imdbid supplied or invalid data provided", content = @Content),
             @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content) })
-    public Movie updateMovieInfo(@RequestBody Movie movie)
+    public Movie updateMovieInfo(@PathVariable String imdbid, @RequestBody String comment)
     {
-        return service.updateMovie(movie);
+        return service.updateMovie(imdbid, comment);
     }
 
     @PostMapping(value = "/{imdbid}")

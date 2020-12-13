@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 
@@ -53,14 +54,19 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie updateMovie(Movie m)
+    public Movie updateMovie(String imdbId, String comment)
     {
+        Movie m = movieRepo.findByImdbID(imdbId);
+        m.setReview(comment);
         return movieRepo.save(m);
     }
 
     @Override
     public List<Movie> findByTitle(String title){
-        return movieRepo.findByTitleIsLike(title);
+        if (title.equalsIgnoreCase("*"))
+            return movieRepo.findAll();
+
+        return movieRepo.findByTitleLike("%" + title + "%");
     }
 
     @Override
@@ -92,6 +98,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional
     public int deleteMovie(String imdbId)
     {
         return movieRepo.deleteByImdbID(imdbId);

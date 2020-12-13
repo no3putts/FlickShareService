@@ -26,8 +26,17 @@ public class Movie
     private String country;
     private String poster;
     private String imdbRating;
-
+    private String review;
     private String owner;
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
 
     public String getImdbID() {
         return imdbID;

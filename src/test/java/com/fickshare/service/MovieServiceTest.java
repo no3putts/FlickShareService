@@ -48,7 +48,7 @@ public class MovieServiceTest {
 
 //    @Test
     public void findByTitle() {
-        given(dao.findByTitleIsLike(title)).willReturn((List<Movie>) movie);
+        given(dao.findByTitleLike(title)).willReturn((List<Movie>) movie);
         List<Movie> m = movieService.findByTitle(title);
         assert(true);
     }
