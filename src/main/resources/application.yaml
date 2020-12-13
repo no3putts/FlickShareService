@@ -4,6 +4,12 @@ spring:
     username: ${username:test}
     password: ${password:test}
     driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
 
   jpa:
     hibernate:
