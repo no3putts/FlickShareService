@@ -16,7 +16,7 @@ public class Reservation {
     private long id;
 
     private long userId;
-    private long movieId;
+    private String imdbId;
     private String title;
     private Date holdDts;
     private Date checkoutDts;
@@ -38,12 +38,12 @@ public class Reservation {
         this.userId = userId;
     }
 
-    public long getMovieId() {
-        return movieId;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    public void setMovieId(long movieId) {
-        this.movieId = movieId;
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public String getTitle() {
@@ -85,7 +85,7 @@ public class Reservation {
         Reservation that = (Reservation) o;
         return getId() == that.getId() &&
                 getUserId() == that.getUserId() &&
-                getMovieId() == that.getMovieId() &&
+                getImdbId() == that.getImdbId() &&
                 Objects.equals(getTitle(), that.getTitle()) &&
                 Objects.equals(getHoldDts(), that.getHoldDts()) &&
                 Objects.equals(getCheckoutDts(), that.getCheckoutDts()) &&
@@ -94,7 +94,7 @@ public class Reservation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUserId(), getMovieId(), getTitle(), getHoldDts(), getCheckoutDts(), getReturnDts());
+        return Objects.hash(getId(), getUserId(), getImdbId(), getTitle(), getHoldDts(), getCheckoutDts(), getReturnDts());
     }
 
 }

@@ -56,7 +56,7 @@ public class MovieController
             @ApiResponse(responseCode = "400", description = "Invalid Title supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content) })
     public List<Movie> findMovieByTitle(@PathVariable String title,
-                                        @Parameter(description="Specifies which source to query.  Possible (local | omdb") @RequestParam(required = false,name = "source",defaultValue = "local") String source)
+                                        @Parameter(description="Specifies which source to query.  Possible (local | omdb") @RequestParam(required = false,name = "source",defaultValue = "omdb") String source)
     {
         if (source.equalsIgnoreCase(LOCAL))
             return service.findByTitle(title);

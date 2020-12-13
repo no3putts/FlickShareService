@@ -63,7 +63,6 @@ public class MovieServiceImpl implements MovieService {
         return movieRepo.findByTitleIsLike(title);
     }
 
-
     @Override
     public List<Movie> getImdbMovieByTile(String title){
 

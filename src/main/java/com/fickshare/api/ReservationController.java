@@ -1,7 +1,6 @@
 package com.fickshare.api;
 
 
-import com.fickshare.domain.Movie;
 import com.fickshare.domain.Reservation;
 import com.fickshare.service.ReservationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -35,9 +33,10 @@ public class ReservationController
                             schema = @Schema(implementation = Reservation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid username supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Reservations not found", content = @Content) })
-    public List<Reservation> findUserReservertion(@PathVariable String userid)
+    public List<Reservation> findUserReservation(@PathVariable String userid)
     {
-        return new ArrayList<>();
+        long userId = 1;  // Everything is assigned to the test user for now
+        return service.findReservationByUser(userId);
     }
 
     @PostMapping(value = "/{imdbId}/{userid}")
@@ -48,9 +47,9 @@ public class ReservationController
                             schema = @Schema(implementation = Reservation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid imdbid supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content) })
-    public Movie reserveMovie(@PathVariable String imdbId, @PathVariable String userid)
+    public Reservation reserveMovie(@PathVariable String imdbId, @PathVariable String userid)
     {
-        return new Movie();
+        return service.reserveMovie(imdbId, userid);
     }
 
     @DeleteMapping(value = "/{resid}")
