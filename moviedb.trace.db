@@ -1,0 +1,6 @@
+2020-12-13 00:40:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "PLOT VARCHAR_IGNORECASE(255)": "CAST('Albert Nobbs struggles to survive in late 19th-century Ireland, where women aren''t encouraged to be independent. Posing a... (269)"; SQL statement:
+insert into movie (actors, country, director, genre, imdb_rating, language, owner, plot, poster, rated, released, runtime, title, year, imdbid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-196]
+2020-12-13 00:46:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "PLOT VARCHAR_IGNORECASE(255)": "CAST('Albert Nobbs struggles to survive in late 19th-century Ireland, where women aren''t encouraged to be independent. Posing a... (269)"; SQL statement:
+insert into movie (actors, country, director, genre, imdb_rating, language, owner, plot, poster, rated, released, runtime, title, year, imdbid) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-196]
