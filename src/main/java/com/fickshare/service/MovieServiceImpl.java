@@ -23,7 +23,7 @@ public class MovieServiceImpl implements MovieService {
     private RestTemplate restTemplate;
     private MovieRepo movieRepo;
     private ObjectMapper objectMapper;
-    private final String titleUrl = "http://www.omdbapi.com?s=";
+    private final String titleUrl = "http://www.omdbapi.com?page=2&s=";
     private final String omdbidUrl = "http://www.omdbapi.com?i=";
     private final String apiKeyParam = "&apikey=";
 
@@ -41,9 +41,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie saveMovie(String imdbid)
+    public Movie saveMovie(String imdbid,String owner)
     {
         Movie m = getImdbMovie(imdbid);
+        m.setOwner(owner);
        return saveMovie(m);
     }
 
@@ -66,14 +67,14 @@ public class MovieServiceImpl implements MovieService {
         if (title.equalsIgnoreCase("*"))
             return movieRepo.findAll();
 
-        return movieRepo.findByTitleLike("%" + title + "%");
+        return movieRepo.findByTitleLike("%" + title.trim() + "%");
     }
 
     @Override
     public List<Movie> getImdbMovieByTile(String title){
 
 
-        ResponseEntity<String> resp  = restTemplate.getForEntity(titleUrl.concat(title).concat(apiKeyParam).concat(apikey), String.class);
+        ResponseEntity<String> resp  = restTemplate.getForEntity(titleUrl.concat(title.trim()).concat(apiKeyParam).concat(apikey), String.class);
         Search movies = null;
         try {
             movies =  objectMapper.readValue(resp.getBody(),Search.class);

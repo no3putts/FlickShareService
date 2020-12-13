@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MovieService {
     Movie findOne(String id);
-    Movie saveMovie(String imdbid);
+    Movie saveMovie(String imdbid, String owner);
     Movie saveMovie(Movie m);
     Movie updateMovie(String imdbid, String comment);
     List<Movie> findByTitle(String title);

@@ -79,7 +79,7 @@ public class MovieController
         return service.updateMovie(imdbid, comment);
     }
 
-    @PostMapping(value = "/{imdbid}")
+    @PostMapping(value = "/{imdbid}/{owner}")
     @Operation(summary = "Add Movie to the local database by fetching Movie info from the Web")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Movie successfully added",
@@ -87,9 +87,9 @@ public class MovieController
                             schema = @Schema(implementation = Movie.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid imdbid supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Movie not found", content = @Content) })
-    public Movie createMovie(@PathVariable String imdbid)
+    public Movie createMovie(@PathVariable String imdbid, @PathVariable String owner)
     {
-        return service.saveMovie(imdbid);
+        return service.saveMovie(imdbid,owner);
 
     }
 
