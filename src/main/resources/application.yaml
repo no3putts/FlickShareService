@@ -34,16 +34,16 @@ info:
     name: FlickShareService
     description: Provides Data Services for FlickShareApp
 
-# build properties from maven
-  build:
-    groupId: @project.groupId@
-    artifact: @project.artifactId@
-    name: @project.name@
-    version: @project.version@
+## build properties from maven
+#  build:
+#    groupId: @project.groupId@
+#    artifact: @project.artifactId@
+#    name: @project.name@
+#    version: @project.version@
 
-# environment variables
-  env:
-    java:
-      vendor: ${java.specification.vendor}
-      vm-name: ${java.vm.name}
-      runtime-version: ${java.runtime.version}
+## environment variables
+#  env:
+#    java:
+#      vendor: ${java.specification.vendor}
+#      vm-name: ${java.vm.name}
+#      runtime-version: ${java.runtime.version}

@@ -67,7 +67,7 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getImdbMovieByTile(String title){
 
 
-        ResponseEntity<String> resp  = restTemplate.getForEntity(titleUrl.concat(title).concat(apiKeyParam), String.class);
+        ResponseEntity<String> resp  = restTemplate.getForEntity(titleUrl.concat(title).concat(apiKeyParam).concat(apikey), String.class);
         Search movies = null;
         try {
             movies =  objectMapper.readValue(resp.getBody(),Search.class);
